@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import './ExpenseForm.css';
 
 
-const ExpenseForm = () => {
+const ExpenseForm = ({onSaveExpense}) => {
 
   let [userInput, setUserInput]=useState({    
     title:'',
@@ -15,10 +15,22 @@ const ExpenseForm = () => {
   // let [date, setDate]=useState('');
 
   const titleChangeHandler=(e)=>{
-    setUserInput({
-      ...userInput,
+
+    // const foo =()=>({}); //빈 객체 리턴하기
+
+    setUserInput((preveUserInput)=>({
+      ...preveUserInput,
       title: e.target.value
-    });
+    })
+  );
+    
+    //리액트의 변화 값의 감지는
+    //새로운 값을 가져와야 감지할 수 있어
+    // setUserInput({
+    //   ...userInput,
+    //   title: e.target.value
+    // });
+
   }
 
   const priceChangeHandler=(e)=>{
@@ -38,26 +50,19 @@ const ExpenseForm = () => {
   });
   }
 
-  const formSubmitHandler=(e)=>{
-    e.preventDafault(); //submit차단
-    console.log('submit버튼 누름');
+  const formSubmitHandler = (e) => {
+    e.preventDefault(); // submit 차단
 
-    // const newExpense = {
-    //   title: title,
-    //   price: price,
-    //   date: date
-    // };
+    console.log('submit 버튼을 누름!');
+    onSaveExpense(userInput);
 
-    console.log(userInput);
-
-    //입력창 리셋
+    // 입력창 리셋
     setUserInput({
-      title:'',
-      price:'',
-      date:''
+      title: '',
+      price: '',
+      date: ''
     });
-    
-  }
+  };
 
   return (
     <form onSubmit={formSubmitHandler}>
@@ -80,6 +85,7 @@ const ExpenseForm = () => {
       </div>
     </form>
   );
+
 };
 
 export default ExpenseForm;
