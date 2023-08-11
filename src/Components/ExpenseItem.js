@@ -2,8 +2,9 @@ import React from 'react';
 
 //css로딩
 import './ExpenseItem.css';
+import ExpenseDate from './ExpenseDate';
 
-const ExpenseItem = ({title, price: propsProps, date}) => {
+const ExpenseItem = ({title, price: propsPrice, date}) => { //props => {title, price, date}
 
   // console.log(porps);
 
@@ -17,6 +18,7 @@ const ExpenseItem = ({title, price: propsProps, date}) => {
   }
 
   //날짜 포멧팅 변환함수 정의
+  // eslint-disable-next-line no-unused-vars
   const makeFormattedDate=()=>{
     const year = date.getFullYear(); //년도만 가져와
     const month = date.getMonth(); //년도만 가져와
@@ -26,11 +28,11 @@ const ExpenseItem = ({title, price: propsProps, date}) => {
   }
 
   //숫자를 원화표기법으로 바꾸기
-  const formattedPrice = new Intl.NumberFormat('ko-KR').format(propsProps);
+  const formattedPrice = new Intl.NumberFormat('ko-KR').format(propsPrice);
 
   return (
     <div className="expense-item">
-      <div>{makeFormattedDate()}</div>
+      <ExpenseDate date={date}/>
       <div className="expense-item__description">
         <h2>{title}</h2>
         <div className="expense-item__price">{formattedPrice}원</div>
