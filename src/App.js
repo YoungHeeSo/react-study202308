@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import ExpenseList from './Components/ExpenseList';
-import Hello from './Hello';
+import ExpenseList from './Components/Expenses/ExpenseList';
+
 
 const App = () => {
 
@@ -21,14 +22,15 @@ const App = () => {
       title: '도미노피자',
       price: 35000,
       date: new Date(2023, 7 - 1, 14)
-    }
+    }   
 
   ];
+
+  console.log('app실행');
 
   return (
     <>
       <ExpenseList items={expenses} />
-      <Hello></Hello>
     </>
   );
 };

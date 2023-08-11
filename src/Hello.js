@@ -12,8 +12,8 @@ const Hello = (props) => {
         {props.children}
         Hello React
       </div>
-    </Card>);
-
+    </Card>
+    );
 };
 
 export default Hello;

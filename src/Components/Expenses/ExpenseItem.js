@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 //css로딩
 import './ExpenseItem.css';
 import ExpenseDate from './ExpenseDate';
-import Card from './UI/Card';
+import Card from '../UI/Card';
 
 const ExpenseItem = ({title, price: propsPrice, date}) => { //props => {title, price, date}
 
@@ -12,6 +12,17 @@ const ExpenseItem = ({title, price: propsPrice, date}) => { //props => {title, p
   // const expenseDate=date;
   // const expenseTitle = title;
   // const expensePrice = propsProps;
+
+  // let itemTitle=title;
+
+  //값이 변경되어 화면에 반영되어야 하는 값들은
+  //useState훅을 통해 상태변수로 관리함.
+
+  //useState는 배열을 리턴하는데
+  //첫번째 요소는 관리할 상태값
+  //두번째 요소는 상태값을 변경하는 setter함수
+  let [itemTitle, setItemTitle] = useState(title);
+  // console.log(stateItem);
 
   //한 자리 숫자를 두 자리 숫자로 변환하는 함수 
   const makeTwodigit=(text)=>{
@@ -32,15 +43,25 @@ const ExpenseItem = ({title, price: propsPrice, date}) => { //props => {title, p
   const formattedPrice = new Intl.NumberFormat('ko-KR').format(propsPrice);
 
   const clickHandler=e=>{
-    console.log('버튼 클릭함');
-    console.log(e.target);
-  ;}
+    // title='안녕';
+    // console.log(itemTitle);
+    
+    //state변수는 반드시 setter를 통해서만 변경해야함
+    // setItemTitle((snapshot)=>{
+    //   console.log(`snapshot: ${snapshot}`);
+    //   return '메롱'; 
+
+    //   //반환 값이 새로운 값이 되며, 기존 스냅샷과 다를경우
+    //   //화면을 리렌더링하고 같을경우 리렌더링하지 않아
+    // });
+    setItemTitle('안녕');
+  }
 
   return (    
       <Card className="expense-item">
         <ExpenseDate date={date}/>
         <div className="expense-item__description">
-          <h2>{title}</h2>
+          <h2>{itemTitle}</h2>
           <div className="expense-item__price">{formattedPrice}원</div>
         </div>
         <button id='btn' onMouseOver={clickHandler}>수정</button>
