@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import ExpenseList from './Components/Expenses/ExpenseList';
+import NewExpense from './Components/NewExpense/NewExpense';
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
 
   return (
     <>
+      <NewExpense />
       <ExpenseList items={expenses} />
     </>
   );
