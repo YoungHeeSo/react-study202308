@@ -3,10 +3,10 @@ import './Card.css';
 
 const Card = ({childern, className}) => {
     const madeCalss='card'+className;
-  return (
-  <div className={madeCalss}>
-    {childern}
-  </div>);
+    return (
+        <div className={madeCalss}>
+            {childern}
+        </div>);
 };
 
 export default Card;

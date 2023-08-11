@@ -8,10 +8,10 @@ const Hello = (props) => {
 
   return (
     <Card class='rectangle'>
-    <div>
-    {props.children}
-    Hello React
-    </div>
+      <div>
+        {props.children}
+        Hello React
+      </div>
     </Card>);
 
 };
