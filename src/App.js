@@ -1,11 +1,11 @@
 import React from 'react';
-import ExpenseItem from './Components/ExpenseItem';
 import ExpenseList from './Components/ExpenseList';
+import Hello from './Hello';
 
 const App = () => {
 
   //지출 항목 객체 배열
-  const expense=[
+  const expenses=[
 
     {
       title: '바나나',
@@ -26,7 +26,16 @@ const App = () => {
   ];
 
   return (
-    <ExpenseList expenses={expense} />
+    <>
+    <ExpenseList items={expenses} />
+    <Hello>
+      <ul>
+        <li>사과</li>
+        <li>포도</li>
+        <li>블베</li>
+      </ul>
+    </Hello>
+    </>
   );
 };
 
