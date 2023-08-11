@@ -6,15 +6,6 @@ import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 
 const ExpenseItem = ({title, price: propsPrice, date}) => { //props => {title, price, date}
-
-  // console.log(porps);
-
-  // const expenseDate=date;
-  // const expenseTitle = title;
-  // const expensePrice = propsProps;
-
-  // let itemTitle=title;
-
   //값이 변경되어 화면에 반영되어야 하는 값들은
   //useState훅을 통해 상태변수로 관리함.
 
