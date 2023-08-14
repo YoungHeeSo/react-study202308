@@ -11,9 +11,7 @@ const ExpenseList = ({items}) => {
     console.log(`ExpensList: ${selectedYear}`);    
   }
 
-
-  return (
-    
+  return (    
     <Card className="expenses">
       <ExpenseFilter onChangeFilter={filterChangeHandler}/>
 
@@ -36,6 +34,7 @@ const ExpenseList = ({items}) => {
       />
     </Card>
   );
+  
 };
 
 export default ExpenseList;
