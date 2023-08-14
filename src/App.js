@@ -1,10 +1,7 @@
-/* eslint-disable react/jsx-pascal-case */
-/* eslint-disable no-unused-vars */
+
 import React from 'react';
 import ExpenseList from './Components/Expenses/ExpenseList';
 import NewExpense from './Components/NewExpense/NewExpense';
-import Fake_DB_server from './Fake_DB_server';
-
 
 const App = () => {
    //지출 항목 객체 배열
