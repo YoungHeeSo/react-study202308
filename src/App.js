@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import ExpenseList from './Components/Expenses/ExpenseList';
 import NewExpense from './Components/NewExpense/NewExpense';
 
@@ -32,18 +32,24 @@ const App = () => {
     },
 ];
 
+  //지출 객체배열를 상태변수로 관리
+  const [expenseList, setExpenseList]= useState(expenses);
+
   console.log('app실행');
 
   // ExpenseForm에게 내려보낼 함수
   const addExpenseHandler=(newExpense)=>{
-    console.log('App컴포넌트에서 응답함');
     console.log(newExpense);
+    // expenses.push(newExpense);
+    // console.log(expenses);
+
+    setExpenseList([...expenseList, newExpense]);
   };
 
   return (
     <>
       <NewExpense onAddExpense={addExpenseHandler}/>
-      <ExpenseList items={expenses} />
+      <ExpenseList items={expenseList} />
     </>
   );
 };
