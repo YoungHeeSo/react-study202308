@@ -34,14 +34,9 @@ const CourseInput = ({onAdd}) => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <div className="form-control">
+      <div className={`form-control ${!isValid ? 'invalid':''}`}>
         <label>나의 목표</label>
-        <input 
-        //동적 인라인 스타일 설정하기
-        style={{
-            background: isValid ? 'transparent':'salmon', 
-            borderColor: isValid ? 'black':'red'
-        }}
+        <input         
         type="text" onChange={textChangeHandler} value={enteredText}/>
       </div>
       <Button type="submit">목표 추가하기</Button>
