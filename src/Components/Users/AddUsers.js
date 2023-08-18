@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './AddUsers.module.css'
 import Card from '../UI/Card'
 import Button from '../UI/Button/Button';
-import errorModal from '../UI/Modal/errorModal';
+import ErrorModal from '../UI/Modal/ErrorModal';
 
 const AddUsers = ({onAddUser}) => {
 
@@ -14,23 +14,23 @@ const AddUsers = ({onAddUser}) => {
     //에러 상태 관리
     const [error, setError] = useState(null);
     
-    const usernameChangeHandler=e=>{
+    const usernameChangeHandler=(e)=>{
         setUserValue(prevUserValue=>({
             ...prevUserValue,
             username: e.target.value
         }));
     }
 
-    const ageChangeHandler=e=>{
+    const ageChangeHandler=(e)=>{
         setUserValue(prevUserValue=>({
             ...prevUserValue,
             age: e.target.value
         }));
     }
     
-    const userSubmitHandler=e=>{
-        e.preventDafault();
-        console.log(userValue);
+    const userSubmitHandler=(e)=>{
+        e.preventDefault();    
+        // console.log(userValue);
         
         //입력값
         if(userValue.username.trim()===''|| userValue.age.trim===''){
@@ -40,6 +40,7 @@ const AddUsers = ({onAddUser}) => {
             });
             return;
         }
+
         if( +userValue.age < 1) {
             setError({
                 title:'유효하지 않는 나이의 범위 값',
@@ -53,15 +54,14 @@ const AddUsers = ({onAddUser}) => {
         setUserValue({
             username:'',
             age:''
-        })
-
+        });
     }
     
   return (
 
     //React.Fragment
     <>
-        {error && <errorModal title={error.title} message={error.message} onConfirm={()=>setError(null)}/>}
+        {error && <ErrorModal title={error.title} message={error.message} onConfirm={() => setError(null)} />}
         <Card className={styles.input}>
             <form onSubmit={userSubmitHandler}>
                 <label htmlFor="username">이름</label>

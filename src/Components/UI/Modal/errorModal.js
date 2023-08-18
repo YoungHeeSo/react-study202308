@@ -2,9 +2,9 @@ import React from 'react';
 
 import Card from '../Card';
 import Button from '../Button/Button';
-import styles from './errorModal.module.css';
+import styles from './ErrorModal.module.css';
 
-const errorModal = ({title, message, onConfirm}) => {
+const ErrorModal = ({title, message, onConfirm}) => {
   return (
     <>
       <div className={styles.backdrop} onClick={onConfirm}/>
@@ -23,4 +23,4 @@ const errorModal = ({title, message, onConfirm}) => {
   );
 };
 
-export default errorModal;
+export default ErrorModal;
