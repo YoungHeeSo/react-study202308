@@ -24,7 +24,7 @@ const App = () => {
     }
 
     //상태변수(배열) 수정
-    const updateGoals=[...goals, newGoal];
+    // const updateGoals=[...goals, newGoal];
     // setGoals(updateGoals);
     //순서에 상관없이 이전 데이터사용
     setGoals(prevGoals=>[...prevGoals, newGoal]);
