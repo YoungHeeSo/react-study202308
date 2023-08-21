@@ -5,10 +5,15 @@ import styles from './Login.module.css';
 import Button from '../../UI/Button/Button';
 
 const Login = ({ onLogin }) => {
+  //이메일 입력값 저장
   const [enteredEmail, setEnteredEmail] = useState('');
+  //아매알 입력이 정상적인지 확인
   const [emailIsValid, setEmailIsValid] = useState();
+  //패스워드 입력값을 저장
   const [enteredPassword, setEnteredPassword] = useState('');
+  //패스워드 입력이 정상적인 확인
   const [passwordIsValid, setPasswordIsValid] = useState();
+  //이메일 패스워드 둘다 동시에 정상적인 상태인지 확인
   const [formIsValid, setFormIsValid] = useState(false);
 
   const emailChangeHandler = (e) => {
@@ -54,7 +59,7 @@ const Login = ({ onLogin }) => {
             id="email"
             value={enteredEmail}
             onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
+            onBlur={validateEmailHandler} //포커스가 풀릴 때 
           />
         </div>
         <div
