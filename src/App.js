@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
-import AddUsers from './Components/Users/AddUsers';
-import UserList from './Components/Users/UserList';
+import MainHeader from './Components/SideEffect/MainHeader/MainHeader';
+// import Home from './Components/SideEffect/Home/Home';
+import Login from './Components/SideEffect/Login/Login'
 
 const App = () => {
   
-  const [userList, setUserList]=useState([]);
-
-  const addUserHandler=user=>{
-    console.log(user);
-    //기존 유저값 복사 후 id 추가
-    setUserList(prve=>[...prve, {...user, id:Math.random().toString()}]);
-  }
+ 
 
   return (
     <>
-      <AddUsers onAddUser={addUserHandler}/>
-      <UserList users={userList}/>
+      <MainHeader />
+      <main>
+        {/* <Home /> */}
+        <Login />
+      </main>
     </>
-  )
-}
+  );
+};
 
 export default App
