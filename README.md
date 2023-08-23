@@ -22,3 +22,6 @@ $ npm start
 
 1. styled-components: 동적 css처리를 도와주는 라이브러리
 - ` $npm install styled-components`
+
+2.css 확장 라이브러리 sass
+- `$npm install sass`
