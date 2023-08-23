@@ -1,8 +1,9 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 
 import Card from '../../UI/Card';
 import styles from './Login.module.css';
 import Button from '../../UI/Button/Button';
+import AuthContext from '../../../store/auth-context';
 // import { act } from 'react-dom/test-utils';
 
 // 리듀서 함수
@@ -62,8 +63,9 @@ const passwordReducer=(state, action)=>{
   };  
 }
 
+const Login = () => {
 
-const Login = ({ onLogin }) => {
+  const {onLogin}=useContext(AuthContext);
 
   //email reducer사용하기
   /*
