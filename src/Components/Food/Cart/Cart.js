@@ -29,7 +29,7 @@ const Cart = ({onClose}) => {
 
     return (
 
-        <CartModal onClick={onClose}>
+        <CartModal onClose={onClose}>
             {/* 주문 내역 */}
             <ul className={cartItemStyle}>
             {

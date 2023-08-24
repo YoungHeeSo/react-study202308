@@ -15,11 +15,11 @@ const ModalOverlay = ({ children }) => {
   );
 };
 
-const CartModal = ({children}) => {
+const CartModal = ({children, onClose}) => {
   return (
     <>
       <Portal destId="backdrop-root">
-        <Backdrop />
+        <Backdrop onClose={onClose}/>
       </Portal>
       <Portal destId="overlay-root">
         <ModalOverlay>{children}</ModalOverlay>
