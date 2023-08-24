@@ -10,8 +10,6 @@ const Header = () => {
     <>
       <header className={header}>
         <h1>ReactMeals</h1>
-        {/* <button>Cart</button> */}
-        {/* <HeaderCoartButton /> */}
       </header>
       <div className={mainImage}>
         <img src={mealsImage} alt="Looks very delicious meals" />
