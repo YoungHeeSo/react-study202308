@@ -8,9 +8,10 @@ const defaultState = {
 //리듀서 함수 정의: 여러가지 복잡한 상태관리를 중앙집중화
 //state 업데이터 이전 상태
 //action 어던 업데이틑 하는지에 대한 정보와 필요값들이 들어있음
-const cartReducer=({state, action})=>{
+const cartReducer=(state, action)=>{
     if(action.type==='ADD'){
         const updatedItems = [...state.items, action.item] //기존장바구니항목, 새항목
+        
         return {
             items:updatedItems
         }; //이 액션에 대한 업데이트된 새로운 상태 반환
