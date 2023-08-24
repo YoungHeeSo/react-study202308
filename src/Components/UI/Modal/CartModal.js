@@ -3,8 +3,8 @@ import styles from './CartModal.module.scss';
 
 import Portal from '../Portal/Portal';
 
-const Backdrop = () => {
-  return <div className={styles.backdrop} />;
+const Backdrop = ({onClose}) => {
+  return <div className={styles.backdrop} onClick={onClose}/>;
 };
 
 const ModalOverlay = ({ children }) => {
