@@ -31,7 +31,7 @@ const MealItem = ({id, price, description, name}) => {
         <div className={priceStyle}>{formatPrice}원</div>
       </div>
       <div>
-        <MealItemForm id={id} onaddToCart={addToCartHandler}/>
+        <MealItemForm id={id} onAddToCart={addToCartHandler}/>
       </div>
     </li>
   );
