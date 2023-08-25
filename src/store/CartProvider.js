@@ -11,14 +11,32 @@ const defaultState = {
 //action 어던 업데이틑 하는지에 대한 정보와 필요값들이 들어있음
 const cartReducer=(state, action)=>{
     if(action.type==='ADD'){
-        const updatedItems = [...state.items, action.item] //기존장바구니항목, 새항목
+        //신규아이템
+        const newCartItem = action.item;
+
+        //기존 장바구니에 등록된 메뉴인지 아닌지에 따라 다른 처리를 해야 해
+        const index=state.items.findIndex(item=>item.id===newCartItem.id);
+
+        //기존 아이템
+        const existingItems=[...state.items]; //기존 배열 복사
+        const prevCartItem=existingItems[index]; //기존 배열에서 탐색된 장바구니 아이템을 가져옴
+
+        const updatedPrice=state.totalPrice+(newCartItem.price*newCartItem.amount);
         
-        const updatedPrice=state.totalPrice+(action.item.price*action.item.amount);
+        let updatedItems;
+        if(index===-1){ //신규 아이템
+        updatedItems = [...state.items, newCartItem] //기존장바구니항목, 새항목     
+        }else{ //기존 아이템으로 수량만 올려준다
+            prevCartItem.amount++; //복사된 아이템의 수령을 늘려줌
+            updatedItems=[...existingItems]; //새롭게 복사 배열을 갱신
+        }
+
         return {
             items:updatedItems,
             totalPrice: updatedPrice,
         }; //이 액션에 대한 업데이트된 새로운 상태 반환
     }
+
     else if(action.type==='REMOVE'){
 
         //기존배열에서 id가 일치하는 항목제거

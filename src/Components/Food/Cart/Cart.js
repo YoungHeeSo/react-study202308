@@ -21,9 +21,10 @@ const Cart = ({onClose}) => {
         <CartModal onClose={onClose}>
             {/* 주문 내역 */}
             <ul className={cartItemStyle}>
-            {
-                items.map((cartItem)=>(
-                    <CartItem key={cartItem.id} cart={cartItem}/>
+            {items.map((cartItem)=>(
+                <CartItem 
+                    key={cartItem.id} 
+                    cart={cartItem}/>
                 ))
             }
             </ul>

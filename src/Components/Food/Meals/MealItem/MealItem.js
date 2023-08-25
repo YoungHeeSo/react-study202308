@@ -16,7 +16,8 @@ const MealItem = ({id, price, description, name}) => {
       price: price,
       amount:+amount,
     });
-
+    
+    addItem();
   }
 
   const { meal, description: desc, price: priceStyle } = styles;
