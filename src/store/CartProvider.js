@@ -24,10 +24,11 @@ const cartReducer=(state, action)=>{
         const updatedPrice=state.totalPrice+(newCartItem.price*newCartItem.amount);
         
         let updatedItems;
+        
         if(index===-1){ //신규 아이템
-        updatedItems = [...state.items, newCartItem] //기존장바구니항목, 새항목     
+            updatedItems = [...state.items, newCartItem] //기존장바구니항목, 새항목     
         }else{ //기존 아이템으로 수량만 올려준다
-            prevCartItem.amount++; //복사된 아이템의 수령을 늘려줌
+            prevCartItem.amount+=newCartItem.amount; //복사된 아이템의 수령을 늘려줌
             updatedItems=[...existingItems]; //새롭게 복사 배열을 갱신
         }
 
@@ -39,10 +40,31 @@ const cartReducer=(state, action)=>{
 
     else if(action.type==='REMOVE'){
 
+        //기존 배열 복사
+        const existingItems = [...state.items];
+        //제거 대상의 인덱스를 찾아
+        const index = existingItems.findIndex(item=>item.id===action.id);
+        //제거대상 아이템을 가져옴
+        const delTargetItem=existingItems[index];
+
+        //총액 계산
+        const updatedPrice=state.totalPrice - delTargetItem.price;
+        
         //기존배열에서 id가 일치하는 항목제거
-        const removeedItems= state.items.filter(item=>item.id !== action.id);
+        //업데이터 전의 수량이 1이면 filte로 제거하는게 맞지만
+        // 1보다 크다면 filter제거하면 안되고
+        //기존 배열에서 수량을 1내린 채로 업데이트 해야 해
+        let removedItems;
+        if(delTargetItem.amount===1){
+            removedItems= existingItems.filter(item=>item.id !== action.id);
+        }else{
+            delTargetItem.amount--;
+            removedItems=[...existingItems];
+        }
+
         return{
-            itmes: removeedItems
+            itmes: removedItems,
+            totalPrice: updatedPrice
         };
     }
 

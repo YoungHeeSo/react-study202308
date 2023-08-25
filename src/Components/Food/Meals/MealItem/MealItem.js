@@ -10,17 +10,24 @@ const MealItem = ({id, price, description, name}) => {
   const {addItem}=useContext(CartContext);
 
   const addToCartHandler=(amount)=>{
-    addItem({
+    // addItem({
+    //   id:id,
+    //   name: name,
+    //   price: price,
+    //   amount:+amount,
+    // });
+
+    const item={
       id:id,
       name: name,
       price: price,
       amount:+amount,
-    });
-    
-    addItem();
+    }
+
+    addItem(item);
   }
 
-  const { meal, description: desc, price: priceStyle } = styles;
+  const  {meal, description: desc, price: priceStyle}  = styles;
 
   const formatPrice = new Intl.NumberFormat("ko-KR").format(price);
 
