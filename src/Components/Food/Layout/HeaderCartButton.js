@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import styles from './HeaderCartButton.module.scss';
 
@@ -6,17 +6,37 @@ import CartIcon from '../Cart/CartIcon';
 import CartContext from '../../../store/cart-context';
 
 const HeaderCartButton = ({onShow}) => {
+  //bump 애니메이션을 제어하는 상태 변수
+  const [isBump, setIsBump]=useState(false);
 
   const {items} =useContext(CartContext);
+
 
   const numerofCart= items.reduce((accum, item)=>{
     return accum + item.amount;
   },0);
 
-  const { button, icon, badge } = styles;
+  const { button, icon, badge, bump } = styles;
+
+  useEffect(()=>{
+    if(items.length===0)return;
+
+    console.log('useEffect in CartBtn');
+    setIsBump(true);
+
+    //애니메이션 시간이 300밀리초으로 그 시간이 지나면 클래스를 제거
+    const timer=setTimeout(()=>{
+      setIsBump(false);
+    },300);
+
+    return()=>{
+      clearTimeout(timer);
+    }
+
+  },[items]); //상태변수의 내용이 바뀔때마다 재실행
 
   return (
-    <button className={button} onClick={onShow}>
+    <button className={`${button} ${isBump?bump:''}`} onClick={onShow}>
       <span className={icon}>
         <CartIcon />
       </span>

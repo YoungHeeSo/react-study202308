@@ -36,7 +36,9 @@ const Cart = ({onClose}) => {
 
             <div className={actions}>
                 <button className={btnAlt} onClick={onClose}>닫기</button>
-                <button className={button}>주문</button>
+                {/* 카트에 담긴게 아무것도 없다면 주문버튼 비활성화 시켜 */}
+                {items.length>0&&<button className={button}>주문</button>}
+                {/* items.length가 0보다 크면  */}
             </div>
         </CartModal>
     );
