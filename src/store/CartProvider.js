@@ -63,7 +63,7 @@ const cartReducer=(state, action)=>{
         }
 
         return{
-            itmes: removedItems,
+            items: removedItems,
             totalPrice: updatedPrice
         };
     }
@@ -77,7 +77,7 @@ const CartProvider = ({children}) => {
     const [cartState, dispatchCartAction]=useReducer(cartReducer, defaultState);
 
     //Provider의 value는 실제로 관리할 데이터 객체
-    const cartcontext = {
+    const cartContext = {
         items:cartState.items, //장바구니 항목 배열
         totalPrice: cartState.totalPrice,
         addItem: item=>{
@@ -96,7 +96,7 @@ const CartProvider = ({children}) => {
     }
     
   return (
-    <CartContext.Provider value={cartcontext}>
+    <CartContext.Provider value={cartContext}>
         {children}
     </CartContext.Provider>
   );
