@@ -36,8 +36,8 @@ const CartItem = ({ cart }) => {
         </div>
       </div>
       <div className={actions}>
-        <button click={cartRemoveItemHandler}>−</button>
-        <button click={cartAddItemHandler}>+</button>
+        <button onClick={cartRemoveItemHandler}>−</button>
+        <button onClick={cartAddItemHandler}>+</button>
       </div>
     </li>
   );

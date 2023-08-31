@@ -15,6 +15,7 @@ const Cart = ({onClose}) => {
     }=styles;
 
     const {items, totalPrice}=useContext(CartContext);
+    console.log(items);
 
     return (
 

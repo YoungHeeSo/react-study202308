@@ -12,7 +12,7 @@ const HeaderCartButton = ({onShow}) => {
   const {items} =useContext(CartContext);
 
 
-  const numerofCart= items.reduce((accum, item)=>{
+  const numberOfCart= items.reduce((accum, item)=>{
     return accum + item.amount;
   },0);
 
@@ -41,7 +41,7 @@ const HeaderCartButton = ({onShow}) => {
         <CartIcon />
       </span>
       <span>My Cart</span>
-      <span className={badge}>{numerofCart}</span>
+      <span className={badge}>{numberOfCart}</span>
     </button>
   );
 };
